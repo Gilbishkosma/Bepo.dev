@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 interface TabProps extends React.PropsWithChildren {
   name: string;
   ariaLabel: string;
@@ -5,6 +7,13 @@ interface TabProps extends React.PropsWithChildren {
 }
 
 const Tab = ({ name, ariaLabel, isChecked = false, children }: TabProps) => {
+  useEffect(() => {
+    console.log('hey');
+    return () => {
+      console.log('first');
+    };
+  }, [name]);
+
   return (
     <>
       <input

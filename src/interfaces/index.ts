@@ -13,7 +13,12 @@ export interface StateProp {
   contextLength: number;
 }
 
-interface optionProp {
+export interface optionProp {
   label: string;
   value: string;
+}
+
+export interface styleProp {
+  className?: string;
+  style?: any;
 }

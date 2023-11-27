@@ -9,7 +9,7 @@ interface inputPrope {
   placeholder?: string;
   extendClass?: string;
   rootClass?: string;
-  register: any;
+  register?: any;
 }
 
 const CustomInput: React.FC<inputPrope> = ({

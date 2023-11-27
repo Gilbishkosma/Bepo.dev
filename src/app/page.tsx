@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { getCountries } from 'whatsapp-country-code';
 /**
  * Renders the Home page component.
  *

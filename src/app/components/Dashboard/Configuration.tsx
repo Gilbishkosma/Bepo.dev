@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getCountries } from 'whatsapp-country-code';
+import { getCountries, CountryProp } from 'whatsapp-country-code';
 import {
   CustomInput,
   CustomSelect,
@@ -52,7 +52,7 @@ const Configuration = () => {
           <InputWithSelect
             title='Whatsapp Number'
             placeholder='Enter your whatsapp number'
-            options={getCountries().map((item: any) => ({
+            options={getCountries().map((item: CountryProp) => ({
               value: `${item.iso_alpha_2_code} ${item.code}`,
               label: `${item.iso_alpha_2_code} ${item.code}`,
             }))}

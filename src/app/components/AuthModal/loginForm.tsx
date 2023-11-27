@@ -1,4 +1,6 @@
-import { CustomInput } from '../Form';
+'use client';
+import { GoogleIcon } from '@/svg';
+import { useGoogleLogin } from '@react-oauth/google';
 
 interface LoginProp {
   showLoginForm: (value: boolean) => void;
@@ -13,32 +15,22 @@ interface LoginProp {
  * @returns {JSX.Element} The rendered component.
  */
 const LoginForm = ({ showLoginForm }: LoginProp) => {
-  const onCreateAccountClick = (event) => {
+  const onCreateAccountClick = () => {
     showLoginForm(false);
   };
 
+  const login = useGoogleLogin({
+    onSuccess: (tokenResponse) => console.log(tokenResponse),
+  });
+
   return (
-    <>
+    <div>
       <p className='mb-6 text-center text-2xl'>Login Form</p>
-      <form>
-        <CustomInput title='Email' type='email' placeholder='Enter the email' />
-        <CustomInput
-          title='Password'
-          type='password'
-          placeholder='Enter the password'
-        />
-        <div className='mt-4 flex items-center justify-between'>
-          <button
-            type='button'
-            className='btn-ghost btn-xs btn text-slate-700'
-            onClick={onCreateAccountClick}
-          >
-            Create an account?
-          </button>
-          <button className='btn-success btn'>Submit</button>
-        </div>
-      </form>
-    </>
+      <button className='btn w-full justify-start' onClick={() => login()}>
+        <GoogleIcon className='h-8' style={{ flex: '0.5' }} />
+        Login with Google
+      </button>
+    </div>
   );
 };
 
