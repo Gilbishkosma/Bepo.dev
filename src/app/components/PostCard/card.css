@@ -1,0 +1,7 @@
+.root:hover .title {
+  text-decoration: underline wavy rgb(249, 70, 99);
+}
+
+.title {
+  transition: all;
+}

@@ -1,29 +1,23 @@
-import Link from 'next/link';
+import { getDocumentList } from '@/appwrite';
+import { postProp } from '@/interfaces';
+
+import ENVS from '@/config';
+import { PostList, Tags, Root } from '@/app/components';
 /**
  * Renders the Home page component.
  *
  * @component
  * @returns {JSX.Element} The rendered component.
  */
-export default function Home() {
+export default async function Home() {
+  const data: postProp[] = await getDocumentList(ENVS.APPWRITE.postsID);
   return (
     <>
-      <div className='hero min-h-screen' style={{ backgroundImage: 'url()' }}>
-        <div>
-          <div className='grid text-7xl font-black'>
-            Use OpenAi from your <p className='text-success'>whatsapp</p>
-          </div>
-          <p className='mt-2'>
-            Unleash the Power of OpenAI in Your WhatsApp World: Where Innovation
-            Meets Instant Messaging!
-          </p>
-          <Link href='/dashboard'>
-            <button className='btn btn-outline btn-success mt-4'>
-              Get Started
-            </button>
-          </Link>
-        </div>
-      </div>
+      <Root>
+        {/* @ts-expect-error */}
+        <Tags title='Search blog by topics' />
+        <PostList data={data} />
+      </Root>
     </>
   );
 }

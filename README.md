@@ -1,6 +1,6 @@
 # About Project:
 
-Frontend of Bepo
+Frontend of Bepo.dev using NextJs,AppWrite and DaisyUI
 
 ### Add the comments in every component which you gonna work on, it's useful for other developers to understand the component better.
 

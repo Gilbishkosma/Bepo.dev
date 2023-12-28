@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import { LoginButton } from '../Buttons';
-import Profile from './profile';
 
 /**
  * Renders the navigation bar with login/profile button.
@@ -9,20 +7,21 @@ import Profile from './profile';
  * @returns {JSX.Element} The rendered component.
  */
 const Header = () => {
-  const isAuthenticated = false;
   return (
     <>
-      <div className='navbar rounded-lg bg-base-100 shadow-sm'>
+      <div className='navbar rounded-lg bg-white shadow-xl'>
         <div className='flex-1'>
           <Link href='/'>
             <button className='btn btn-ghost text-xl normal-case'>
-              BEPO.AI
+              BEPO.DEV
             </button>
           </Link>
         </div>
-        <div className='flex-none'>
-          {!isAuthenticated ? <LoginButton text='Login' /> : <Profile />}
-        </div>
+        <Link href='/about'>
+          <p className='pr-5 hover:underline hover:decoration-pink-500 hover:decoration-wavy'>
+            About
+          </p>
+        </Link>
       </div>
     </>
   );
