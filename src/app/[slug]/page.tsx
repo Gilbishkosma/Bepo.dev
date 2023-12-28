@@ -21,7 +21,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
   }
   return (
     <>
-      <div className='mt-5 grid items-center justify-center rounded-lg bg-white py-14'>
+      <div className='mt-5 grid items-center justify-center rounded-lg bg-white px-5 py-14 sm:px-2 '>
         <div className='max-w-3xl overflow-auto'>
           <p className='text-6xl font-bold'>{post.title}</p>
           <TagList tags={post.tags} />
