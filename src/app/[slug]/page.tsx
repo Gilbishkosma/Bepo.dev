@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm';
 import remarkEmoji from 'remark-emoji';
 import ENVS from '@/config';
 import './post.css';
+import type { Metadata } from 'next'
 import { Message, TagList } from '@/app/components';
 
 const options = {
@@ -14,7 +15,14 @@ const options = {
   },
 };
 
-const Post = async ({ params }: { params: { slug: string } }) => {
+interface Props{
+  params: {
+   slug: string
+  }
+}
+
+
+const Post = async ({ params }: Props) => {
   const post = await getDocument(ENVS.APPWRITE.postsID, 'slug', params.slug);
   if (!post) {
     return <Message title='404 - Not Found' />;
@@ -44,3 +52,15 @@ export async function generateStaticParams() {
 }
 
 export default Post;
+
+
+// metaData
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata>{
+    const post = await getDocument(ENVS.APPWRITE.postsID, 'slug', params.slug);
+    return{
+      title: params.slug,
+      description:`${post?.description} | written by Gilbish Kosma.`
+    }
+}

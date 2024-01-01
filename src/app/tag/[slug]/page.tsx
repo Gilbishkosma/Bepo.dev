@@ -1,8 +1,15 @@
 import { PostList, Root, Message } from '@/app/components';
 import { getDocumentList, getDocument } from '@/appwrite';
+import type { Metadata } from 'next'
 import ENVS from '@/config';
 
-const TagRelatedPosts = async ({ params }: { params: { slug: string } }) => {
+interface Props{
+   params: {
+    slug: string
+   }
+}
+
+const TagRelatedPosts = async ({ params }: Props) => {
   const tagData = await getDocument(ENVS.APPWRITE.tagsID, 'title', params.slug);
   if (!tagData) {
     return <Message title='404 - Not Found' />;
@@ -28,3 +35,13 @@ export async function generateStaticParams() {
 }
 
 export default TagRelatedPosts;
+
+// metaData
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata>{
+    return{
+      title:params.slug,
+      description:`List of articles written about ${params.slug} | articles written by Gilbish Kosma.`
+    }
+}
