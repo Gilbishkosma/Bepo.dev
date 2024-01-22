@@ -3,7 +3,7 @@ import { defaultProp } from '@/interfaces';
 const Root = ({ classes, children }: defaultProp) => {
   return (
     <>
-      <div className={`mt-10 min-h-screen bg-white p-5 ${classes || ''}`}>
+      <div className={` min-h-screen mx-2 sm:mx-1 my-10 bg-white p-5 ${classes || ''}`}>
         {children}
       </div>
     </>

@@ -22,6 +22,7 @@ export interface postProp extends Models.Document {
   description: string;
   tags: tagsProp[];
   slug: string;
+  published_at: string;
 }
 
 export interface defaultProp {

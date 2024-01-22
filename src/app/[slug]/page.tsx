@@ -6,7 +6,7 @@ import remarkEmoji from 'remark-emoji';
 import ENVS from '@/config';
 import './post.css';
 import type { Metadata } from 'next'
-import { Message, TagList } from '@/app/components';
+import { Message, Root, TagList } from '@/app/components';
 
 const options = {
   mdxOptions: {
@@ -29,16 +29,16 @@ const Post = async ({ params }: Props) => {
   }
   return (
     <>
-      <div className='mt-5 grid items-center justify-center rounded-lg bg-white px-5 py-14 sm:px-2 '>
+      <Root classes='grid items-center justify-center rounded-lg px-5 py-14'>
         <div className='max-w-3xl overflow-auto'>
-          <p className='text-6xl font-bold'>{post.title}</p>
+          <p className='md:text-6xl sm:text-5xl text-4xl font-bold'>{post.title}</p>
           <TagList tags={post.tags} />
           <article className='mdx-root prose mt-8 lg:prose-xl'>
             {/* @ts-expect-error */}
             <MDXRemote source={post.body} options={options} />
           </article>
         </div>
-      </div>
+      </Root>
     </>
   );
 };

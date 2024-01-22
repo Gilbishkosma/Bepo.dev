@@ -8,7 +8,7 @@ const PostList = ({ data }: { data: postProp[] }) => {
         <div className='mt-10 grid max-w-4xl gap-1 sm:grid-cols-1 md:grid-cols-3 md:gap-5'>
           {data.map((item) => (
             <>
-              <PostDate classes='col-span-1' date='26 Feb 2023' />
+              <PostDate classes='col-span-1' date={new Date(item.published_at).toDateString()} />
               <PostCard
                 key={item.$id}
                 {...item}
